@@ -1,654 +1,663 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCS for Business — Inmo</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Inmo RCS Material Explicativo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap');
+/* Layout: landing Material 3 em faixas que alternam branco puro, cinza #F8F9FA texturizado e dark #1F1F1F.
+   Celulares altos (tela ~560px) com chat RCS fiel; mensagens montam em cascata conforme o scroll. */
+:root{
+  --blue:#4285F4; --red:#EA4335; --yellow:#FBBC05; --green:#34A853;
+  --blue-ink:#1A56C4; --red-ink:#B3261E; --green-ink:#1E7A3A; --yellow-ink:#7A5A00;
+  --blue-t:#E8F0FE; --red-t:#FCE8E6; --yellow-t:#FEF7E0; --green-t:#E6F4EA;
+  --bg:#FFFFFF; --band:#F8F9FA; --surface:#FFFFFF; --ink:#1F2329; --ink-2:#5F6368; --line:#E3E6EA;
+  --dk-bg:#1F1F1F; --dk-surface:#2B2C2F; --dk-ink:#E8EAED; --dk-ink2:#BDC1C6; --dk-line:#3C4043;
+  --dk-blue:#8AB4F8; --dk-green:#81C995; --dk-yellow:#FDE293; --dk-red:#F28B82;
+  --shadow:0 1px 2px rgba(60,64,67,.12),0 4px 14px rgba(60,64,67,.10);
+  --shadow-lg:0 2px 6px rgba(60,64,67,.14),0 20px 48px rgba(60,64,67,.18);
+  --ph-bub:#F1F3F4; --ph-sub:#6B6F76; --ph-line:#E8EAEC; --ph-blue:#1A73E8;
+  --display:'Outfit','Roboto',system-ui,sans-serif; --body:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'Roboto Mono',ui-monospace,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(255,255,255,.9)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;letter-spacing:-.01em;text-wrap:balance;line-height:1.15}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 
-  :root{
-    --bg:#FAFAFC; --paper:#FFFFFF; --ink:#181024; --ink-soft:#534B63;
-    --purple-900:#2A0E4F; --purple-700:#5B21B6; --purple-600:#7C3AED; --purple-400:#A476F0; --purple-200:#E4D9FB;
-    --green:#16A34A; --red:#DC2626; --line:#E7E1F3; --maxw:1180px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
-  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.01em;}
-  .mono{font-family:'JetBrains Mono',monospace;}
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
-  section{position:relative;}
+/* faixas */
+.band{padding-block:96px;background:var(--bg)}
+.band.alt{background:var(--band);background-image:radial-gradient(circle at 1px 1px,rgba(31,35,41,.055) 1px,transparent 0);background-size:22px 22px}
+.band.dark{background:var(--dk-bg);color:var(--dk-ink)}
+@media(max-width:700px){.band{padding-block:64px}}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,250,252,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;}
-  .brand .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--purple-600),#C026D3);}
-  .navlinks{display:flex;gap:26px;font-size:13.5px;font-weight:500;color:var(--ink-soft);}
-  .navlinks a:hover{color:var(--ink);}
-  @media (max-width:900px){.navlinks{display:none;}}
-  .nav-cta{font-size:12.5px;font-weight:600;padding:9px 16px;border-radius:100px;background:var(--ink);color:#fff;}
+.dots{display:inline-flex;gap:5px;vertical-align:middle}
+.dots i{width:8px;height:8px;border-radius:50%;display:block}
+.dots i:nth-child(1){background:var(--blue)}.dots i:nth-child(2){background:var(--red)}.dots i:nth-child(3){background:var(--yellow)}.dots i:nth-child(4){background:var(--green)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-ink);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.band.dark .eyebrow{color:var(--dk-blue)}
+h2.t{font-size:clamp(28px,3.4vw,40px);max-width:760px}
+p.lead{margin-top:14px;color:var(--ink-2);max-width:680px;font-size:17px}
+.band.dark p.lead{color:var(--dk-ink2)}
+.head{margin-bottom:48px}
+.sub{font-family:var(--display);font-size:24px;margin:64px 0 6px;font-weight:600}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:5px 12px;border-radius:100px}
+.tag.b{background:var(--blue-t);color:var(--blue-ink)}.tag.r{background:var(--red-t);color:var(--red-ink)}.tag.y{background:var(--yellow-t);color:var(--yellow-ink)}.tag.g{background:var(--green-t);color:var(--green-ink)}
 
-  /* HERO */
-  .hero{
-    min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:150px 0 80px;
-    background:radial-gradient(ellipse 900px 600px at 15% -5%, rgba(124,58,237,.32), transparent 60%),
-               radial-gradient(ellipse 700px 500px at 100% 15%, rgba(192,38,211,.22), transparent 60%),
-               linear-gradient(180deg, var(--purple-900) 0%, #190a35 55%, #110726 100%);
-    color:#fff;overflow:hidden;
-  }
-  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative;z-index:2;}
-  @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;}}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.06em;color:var(--purple-200);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:7px 14px;margin-bottom:26px;}
-  .eyebrow .blip{width:6px;height:6px;border-radius:50%;background:#34D399;}
-  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:700;line-height:1.08;}
-  .hero h1 em{font-style:normal;background:linear-gradient(100deg,#D6BBFF,#F0ABFC 60%,#FBCFE8);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero p.lead{margin-top:20px;max-width:520px;font-size:16.5px;color:#D6CCEC;}
-  .stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:36px;text-align:center;backdrop-filter:blur(6px);}
-  .stat-card .big{font-family:'Space Grotesk';font-size:56px;font-weight:700;line-height:1;background:linear-gradient(100deg,#fff,#D6BBFF);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .stat-card .lbl{margin-top:8px;font-size:14px;color:#CBB8EE;}
-  .stat-card .src{margin-top:18px;font-family:'JetBrains Mono';font-size:10.5px;color:#8A72B8;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);min-width:0}
+.card h3{font-size:20px;margin-bottom:8px}
+.card p,.card li{color:var(--ink-2);font-size:15px}
+.card ul{list-style:none;display:grid;gap:8px;margin-top:12px}
+.card li{display:flex;gap:10px;align-items:flex-start}
+.card li::before{content:"";flex:0 0 8px;height:8px;border-radius:50%;margin-top:8px;background:var(--blue)}
+.band.dark .card{background:var(--dk-surface);border-color:var(--dk-line);box-shadow:none}
+.band.dark .card h3{color:#fff}
+.band.dark .card p,.band.dark .card li{color:var(--dk-ink2)}
+.band.dark .card li::before{background:var(--dk-blue)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
+.ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px}
+.ico svg{width:24px;height:24px}
+.ico.b{background:var(--blue-t);color:var(--blue-ink)}.ico.r{background:var(--red-t);color:var(--red-ink)}.ico.y{background:var(--yellow-t);color:var(--yellow-ink)}.ico.g{background:var(--green-t);color:var(--green-ink)}
+.band.dark .ico.b{background:rgba(138,180,248,.16);color:var(--dk-blue)}
+.band.dark .ico.r{background:rgba(242,139,130,.16);color:var(--dk-red)}
+.band.dark .ico.y{background:rgba(253,226,147,.16);color:var(--dk-yellow)}
+.band.dark .ico.g{background:rgba(129,201,149,.16);color:var(--dk-green)}
+.band.dark .phone{background:#38393D;box-shadow:0 2px 6px rgba(0,0,0,.5),0 22px 52px rgba(0,0,0,.55)}
 
-  /* SECTION HEADERS */
-  .section{padding:100px 0;}
-  .section.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .kicker{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-600);font-weight:500;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .kicker::before{content:'';width:18px;height:2px;background:var(--purple-600);display:inline-block;}
-  .section h2{font-size:clamp(26px,3vw,36px);font-weight:700;max-width:680px;margin-bottom:12px;}
-  .section .sub{font-size:15.5px;color:var(--ink-soft);max-width:620px;}
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:20px}
+.brand small{font-family:var(--body);font-weight:500;font-size:12px;color:var(--ink-2);border-left:1px solid var(--line);padding-left:10px}
+.links{display:flex;gap:4px}
+.links a{font-size:14px;font-weight:500;color:var(--ink-2);padding:8px 14px;border-radius:100px}
+.links a:hover{background:var(--band);color:var(--ink)}
+@media(max-width:900px){.links{display:none}}
 
-  /* PHONE MOCKUP COMPONENTS */
-  .phone{width:264px;flex-shrink:0;}
-  .phone-frame{background:#0c0c10;border-radius:34px;padding:9px;box-shadow:0 20px 50px -12px rgba(20,10,40,.35);}
-  .phone-screen{background:#fff;border-radius:26px;overflow:hidden;height:520px;display:flex;flex-direction:column;position:relative;}
-  .phone-status{height:22px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#111;font-weight:600;}
-  .msg-header{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid #eee;}
-  .msg-avatar{width:30px;height:30px;border-radius:50%;background:var(--purple-600);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex-shrink:0;}
-  .msg-name-row{display:flex;align-items:center;gap:4px;}
-  .msg-name{font-size:12.5px;font-weight:600;color:#111;}
-  .verified{width:12px;height:12px;border-radius:50%;background:#0B57D0;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .verified::after{content:'';width:5px;height:3px;border-left:1.4px solid #fff;border-bottom:1.4px solid #fff;transform:rotate(-45deg) translate(0,-0.5px);}
-  .msg-sub{font-size:9px;color:#8a8a8a;}
-  .msg-body{flex:1;overflow-y:auto;padding:10px 10px 6px;background:#fff;font-family:'Roboto',sans-serif;}
-  .bubble-agent{background:#F1F3F4;border-radius:2px 14px 14px 14px;padding:8px 11px;font-size:11px;color:#1a1a1a;max-width:84%;margin-bottom:8px;line-height:1.4;}
-  .bubble-user{background:#0B57D0;color:#fff;border-radius:14px 14px 2px 14px;padding:8px 11px;font-size:11px;max-width:74%;margin:0 0 8px auto;line-height:1.4;}
-  .chip-row{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;}
-  .chip{border:1px solid #0B57D0;color:#0B57D0;border-radius:14px;padding:5px 11px;font-size:10px;background:#fff;white-space:nowrap;}
-  .chip.filled{background:#0B57D0;color:#fff;}
-  .rich-card{background:#fff;border:1px solid #e2e2e2;border-radius:12px;overflow:hidden;max-width:88%;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
-  .rich-card .media{height:78px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;letter-spacing:.03em;}
-  .rich-card .body{padding:9px 10px;}
-  .rich-card .ti{font-size:10.5px;font-weight:700;color:#111;margin-bottom:3px;}
-  .rich-card .de{font-size:9.5px;color:#666;line-height:1.4;}
-  .rich-card .acts{border-top:1px solid #eee;}
-  .rich-card .acts .a{padding:7px 10px;font-size:10px;color:#0B57D0;font-weight:600;border-bottom:1px solid #f2f2f2;}
-  .rich-card .acts .a:last-child{border-bottom:none;}
-  .carousel-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px;}
-  .carousel-row .rich-card{flex:0 0 128px;max-width:none;margin-bottom:0;}
-  .rcs-input{margin-top:auto;display:flex;align-items:center;gap:6px;padding:8px 10px;border-top:1px solid #eee;background:#fff;}
-  .rcs-input .field{flex:1;background:#F1F3F4;border-radius:16px;padding:7px 12px;font-size:9.5px;color:#8a8a8a;}
-  .rcs-input .ic{width:16px;height:16px;border-radius:50%;background:#e2e2e2;flex-shrink:0;}
-  .phone-caption{text-align:center;margin-top:14px;font-size:12.5px;font-weight:600;color:var(--ink);}
-  .phone-caption .sm{display:block;font-size:10.5px;font-weight:400;color:var(--ink-soft);font-style:italic;margin-top:2px;}
+/* HERO */
+.hero{position:relative;overflow:hidden;padding-block:76px 84px;background:var(--bg)}
+.hero .hgrid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:44px;align-items:center}
+@media(max-width:940px){.hero .hgrid{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-size:clamp(36px,5vw,58px);margin-top:20px}
+.hero h1 b{font-weight:700;background:linear-gradient(90deg,var(--blue) 0%,var(--blue) 30%,var(--red) 55%,var(--yellow) 78%,var(--green) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:18px}
+.paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:32px}
+@media(max-width:560px){.paths{grid-template-columns:minmax(0,1fr)}}
+.path{display:block;border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.path:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.path .k{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.path.one .k{color:var(--blue-ink)}.path.two .k{color:var(--green-ink)}
+.path strong{display:block;font-family:var(--display);font-size:18px;margin:4px 0 2px}
+.path span.d{font-size:13.5px;color:var(--ink-2)}
+.stage{position:relative;min-height:700px;display:flex;justify-content:center;align-items:center}
+.stage .blob{position:absolute;border-radius:50%}
+.stage .b1{width:300px;height:300px;background:var(--blue-t);top:2%;right:4%}
+.stage .b2{width:130px;height:130px;background:var(--yellow-t);bottom:5%;left:2%}
+.stage .b3{width:76px;height:76px;background:var(--red-t);top:10%;left:8%}
+.stage .b4{width:160px;height:160px;border-radius:48px;background:var(--green-t);bottom:0;right:0;transform:rotate(12deg)}
+.stage .phone.back{position:absolute;left:0;top:50px;transform:rotate(-7deg) scale(.88);transform-origin:top left}
+.stage .phone.front{position:relative;margin-left:110px;z-index:2}
+@media(max-width:560px){.stage{min-height:0;padding-top:20px}.stage .phone.back{display:none}.stage .phone.front{margin-left:0}}
+.float{position:absolute;z-index:3;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-lg);border-radius:16px;padding:10px 14px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
+.float.f1{top:6px;right:0}.float.f2{bottom:9%;left:0}
+@media(max-width:560px){.float.f1{top:0;right:0}.float.f2{bottom:0;left:0}}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:60px}
+@media(max-width:760px){.stats{grid-template-columns:minmax(0,1fr)}}
+.stat{border-radius:24px;padding:24px 26px}
+.stat .n{font-family:var(--display);font-size:clamp(32px,3.6vw,44px);font-weight:700;line-height:1.1}
+.stat .n.sm2{font-size:clamp(24px,2.6vw,32px);line-height:1.25}
+.stat .l{margin-top:8px;font-size:14px}
+.stat.b{background:var(--blue-t);color:var(--blue-ink)}.stat.g{background:var(--green-t);color:var(--green-ink)}.stat.y{background:var(--yellow-t);color:var(--yellow-ink)}
+.src{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
 
-  /* GRIDS */
-  .flow-row{display:flex;gap:26px;overflow-x:auto;padding:8px 4px 20px;margin-top:48px;}
-  .flow-row.center{justify-content:center;flex-wrap:wrap;}
+/* PHONE — mockup alto, Google Messages */
+.phone{width:276px;flex:0 0 auto;background:#202124;border-radius:48px;padding:10px;box-shadow:var(--shadow-lg);position:relative}
+.phone::after{content:"";position:absolute;right:-3px;top:120px;width:3px;height:64px;border-radius:0 3px 3px 0;background:#3C4043}
+.screen{background:#fff;color:#1F1F1F;border-radius:38px;overflow:hidden;height:560px;display:flex;flex-direction:column;font-family:var(--body);position:relative}
+.screen.h-m{height:470px}
+.screen::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:#202124;z-index:3}
+.status{height:34px;padding:12px 20px 0;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;font-weight:500;color:#1F1F1F}
+.status .ic{display:flex;gap:5px;align-items:center}
+.status .wifi{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid #1F1F1F}
+.status .bat{width:16px;height:8px;border-radius:2px;background:#1F1F1F}
+.ph-head{display:flex;align-items:center;gap:9px;padding:10px 12px;border-bottom:1px solid var(--ph-line)}
+.ph-head .bk{color:#444746;flex:0 0 auto;display:grid;place-items:center}
+.ph-head .bk svg{width:16px;height:16px}
+.ph-head .mn{margin-left:auto;color:#444746;flex:0 0 auto;display:grid;place-items:center}
+.ph-head .mn svg{width:16px;height:16px}
+.av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:11px;flex:0 0 auto;background:linear-gradient(135deg,#4285F4,#34A853)}
+.ph-name{font-size:13px;font-weight:500;display:flex;align-items:center;gap:4px;line-height:1.2;color:#1F1F1F}
+.ph-sub{font-size:9.5px;color:var(--ph-sub)}
+.vf{width:13px;height:13px;border-radius:50%;background:var(--ph-blue);display:inline-grid;place-items:center;flex:0 0 auto}
+.vf::after{content:"";width:6px;height:3px;border-left:1.6px solid #fff;border-bottom:1.6px solid #fff;transform:rotate(-45deg) translate(.5px,-.5px)}
+.msgs{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden;min-height:0}
+.day{align-self:center;font-size:9px;color:var(--ph-sub);background:var(--ph-bub);padding:2px 10px;border-radius:10px}
+.bub{background:var(--ph-bub);color:#1F1F1F;border-radius:4px 18px 18px 18px;padding:9px 12px;font-size:11.5px;line-height:1.45;max-width:86%;align-self:flex-start}
+.bub.me{align-self:flex-end;background:var(--ph-blue);color:#fff;border-radius:18px 18px 4px 18px}
+.bub .num{display:block;font-size:9px;color:var(--ph-sub);margin-bottom:2px}
+.ts{font-size:8.5px;color:var(--ph-sub);align-self:flex-start;margin:-4px 0 0 4px}
+.rc{border:1px solid var(--ph-line);border-radius:18px;overflow:hidden;background:#fff;max-width:92%;box-shadow:0 1px 3px rgba(0,0,0,.07);align-self:flex-start}
+.media{height:104px;position:relative;overflow:hidden}
+.media.m1{background:linear-gradient(135deg,#4285F4,#1A73E8)}
+.media.m2{background:linear-gradient(135deg,#FBBC05,#EA4335)}
+.media.m3{background:linear-gradient(135deg,#34A853,#1E8E3E)}
+.media.m4{background:linear-gradient(135deg,#EA4335,#B31412)}
+.media::before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.18);right:-26px;top:-38px}
+.media::after{content:"";position:absolute;width:70px;height:70px;border-radius:22px;background:rgba(255,255,255,.22);left:16px;bottom:-20px;transform:rotate(14deg)}
+.rc .tx{padding:10px 12px 9px}
+.rc .ti{font-size:12px;font-weight:700;line-height:1.25;color:#1F1F1F}
+.rc .de{font-size:10.5px;color:var(--ph-sub);margin-top:3px;line-height:1.4}
+.rc .ac{border-top:1px solid var(--ph-line);padding:9px 12px;font-size:11px;font-weight:500;color:var(--ph-blue);text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--ph-blue);color:var(--ph-blue);border-radius:100px;padding:5px 12px;font-size:10.5px;font-weight:500;background:#fff}
+.chip.fill{background:var(--ph-blue);color:#fff}
+.car{display:flex;gap:8px;margin-right:-12px;overflow:hidden}
+.car .rc{flex:0 0 138px;max-width:none}
+.car .media{height:76px}
+.car .rc .ac{padding:7px 8px;font-size:10px}
+.composer{display:flex;align-items:center;gap:8px;margin:0 12px 14px}
+.composer .fld{flex:1;background:var(--ph-bub);border-radius:100px;padding:10px 14px;font-size:11px;color:var(--ph-sub)}
+.composer .rnd{width:34px;height:34px;border-radius:50%;background:var(--ph-bub);display:grid;place-items:center;color:#444746;flex:0 0 auto}
+.composer .rnd svg{width:16px;height:16px}
+.cap{text-align:center;margin-top:20px}
+.cap strong{display:block;font-family:var(--display);font-size:17px}
+.cap span{font-size:13.5px;color:var(--ink-2)}
+.band.dark .cap strong{color:#fff}
+.band.dark .cap span{color:var(--dk-ink2)}
+.pc{display:flex;flex-direction:column;align-items:center;min-width:0}
+.phones{display:flex;flex-wrap:wrap;gap:44px 30px;justify-content:center}
 
-  .compare-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:36px;align-items:center;margin-top:48px;}
-  @media (max-width:860px){.compare-grid{grid-template-columns:1fr;}}
-  .compare-col{display:flex;flex-direction:column;align-items:center;}
-  .compare-badge{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.05em;padding:6px 14px;border-radius:100px;margin-bottom:18px;}
-  .compare-badge.bad{background:#FDE8E8;color:var(--red);}
-  .compare-badge.good{background:#E3F4E8;color:var(--green);}
-  .arrow-mid{display:flex;flex-direction:column;align-items:center;gap:10px;}
-  .arrow-mid .ar{font-size:26px;color:var(--purple-400);}
-  .reason-list{margin-top:20px;display:flex;flex-direction:column;gap:8px;width:100%;max-width:260px;}
-  .reason-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);}
-  .reason-item.bad::before{content:'✕';color:var(--red);font-weight:700;}
-  .reason-item.good::before{content:'✓';color:var(--green);font-weight:700;}
+/* COMPARE */
+.cmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+@media(max-width:760px){.cmp{grid-template-columns:minmax(0,1fr)}}
+.cmp .card{display:flex;flex-direction:column;align-items:center}
+.cmp ul{align-self:stretch;margin-top:22px}
+.cmp .no li::before{background:var(--red)}.cmp .yes li::before{background:var(--green)}
+.cmp .tag{margin-bottom:22px}
 
-  /* FEATURE CALLOUT (confianca) */
-  .callout-wrap{display:flex;gap:60px;align-items:center;margin-top:48px;flex-wrap:wrap;justify-content:center;}
-  .callout-list{display:flex;flex-direction:column;gap:22px;max-width:300px;}
-  .callout-item .t{font-size:14px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;}
-  .callout-item .t .n{width:22px;height:22px;border-radius:50%;background:var(--purple-200);color:var(--purple-700);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .callout-item .d{font-size:12.5px;color:var(--ink-soft);margin-top:3px;margin-left:30px;}
+/* SEARCH MOCK */
+.sm{background:#fff;color:#1F1F1F;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:18px;width:100%;max-width:340px}
+.band.dark .sm{border-color:transparent;box-shadow:var(--shadow-lg)}
+.sb{display:flex;align-items:center;gap:10px;border:1px solid var(--ph-line);border-radius:100px;padding:9px 14px;font-size:13px;margin-bottom:14px;background:#fff}
+.sb svg{width:16px;height:16px;color:#5F6368;flex:0 0 auto}
+.sr .biz{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px}
+.sr .u{font-size:12px;color:var(--ph-sub);margin:4px 0 10px}
+.btnrow{display:flex;gap:8px}
+.bt{flex:1;border:1px solid var(--ph-line);border-radius:12px;padding:9px;text-align:center;font-size:12px;font-weight:500}
+.bt.p{background:var(--ph-blue);color:#fff;border-color:var(--ph-blue)}
+.sl{font-size:12.5px;color:var(--blue-ink);padding:5px 0;border-top:1px solid var(--ph-line)}
 
-  /* FORMATS */
-  .format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;}
-  @media (max-width:900px){.format-grid{grid-template-columns:1fr;}}
-  .format-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;}
-  .format-card h4{font-size:15px;margin:16px 0 6px;}
-  .format-card p{font-size:12px;color:var(--ink-soft);}
+/* PRICING */
+.price{display:flex;flex-direction:column;gap:6px;box-shadow:none}
+.price .v{font-family:var(--display);font-size:38px;font-weight:700;line-height:1;margin-top:10px}
+.price .v small{display:block;margin-top:6px;font-size:14px;font-weight:500;font-family:var(--body);color:var(--ink-2)}
+.price .u{font-size:13px;color:var(--ink-2)}
+.price.b{background:var(--blue-t);border-color:transparent}.price.g{background:var(--green-t);border-color:transparent}.price.y{background:var(--yellow-t);border-color:transparent}.price.r{background:var(--red-t);border-color:transparent}
+.price.b .v{color:var(--blue-ink)}.price.g .v{color:var(--green-ink)}.price.y .v{color:var(--yellow-ink)}.price.r .v{color:var(--red-ink)}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:20px}
+@media(max-width:860px){.calc{grid-template-columns:minmax(0,1fr)}}
+.field{margin-bottom:26px}
+.field label{display:flex;justify-content:space-between;font-weight:500;font-size:15px;margin-bottom:10px;gap:10px}
+.field output{font-family:var(--mono);color:var(--blue-ink)}
+input[type=range]{width:100%;height:6px;accent-color:var(--blue);cursor:pointer}
+.res{background:var(--blue-t);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:6px}
+.res .tot{font-family:var(--display);font-size:clamp(36px,5vw,52px);font-weight:700;color:var(--blue-ink);line-height:1.05}
+.res .row{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding:9px 0;border-top:1px solid rgba(66,133,244,.25)}
+.res .row span:last-child{font-family:var(--mono);font-weight:500}
+.tbl{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:500;background:var(--band)}
+tr:last-child td{border-bottom:0}
+.note{display:flex;gap:12px;align-items:flex-start;background:var(--yellow-t);color:var(--yellow-ink);border-radius:20px;padding:16px 20px;font-size:14.5px;margin-top:20px}
+.note svg{width:22px;height:22px;flex:0 0 auto;margin-top:1px}
+.band.dark .note{background:rgba(253,226,147,.12);color:var(--dk-yellow)}
 
-  /* SEARCH MOCK (entry points) */
-  .search-mock{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 50px -20px rgba(20,10,40,.25);padding:16px;max-width:340px;}
-  .search-bar{display:flex;align-items:center;gap:10px;border:1px solid #dfe1e5;border-radius:100px;padding:9px 14px;font-size:13px;color:#333;margin-bottom:14px;}
-  .search-result{border-top:1px solid #eee;padding-top:12px;margin-top:4px;}
-  .search-result .biz{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;margin-bottom:8px;}
-  .search-result .bavatar{width:26px;height:26px;border-radius:50%;background:var(--purple-600);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
-  .search-btn-row{display:flex;gap:8px;margin-top:6px;}
-  .search-btn{border:1px solid #dfe1e5;border-radius:8px;padding:8px 10px;font-size:10.5px;color:#333;flex:1;text-align:center;}
-  .search-btn.msg{background:#0B57D0;color:#fff;border-color:#0B57D0;font-weight:600;}
-  .entry-badge{font-family:'JetBrains Mono';font-size:10px;background:var(--purple-700);color:#fff;border-radius:100px;padding:5px 12px;display:inline-block;margin-top:12px;}
+/* TIMELINE */
+.tl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+@media(max-width:980px){.tl{grid-template-columns:minmax(0,1fr)}}
+.st{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.st .pill{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:100px;margin-bottom:12px}
+.st h4{font-size:17px;margin-bottom:6px}
+.st p{font-size:14px;color:var(--ink-2)}
+.st:nth-child(1) .pill{background:var(--blue-t);color:var(--blue-ink)}.st:nth-child(2) .pill{background:var(--red-t);color:var(--red-ink)}.st:nth-child(3) .pill{background:var(--yellow-t);color:var(--yellow-ink)}.st:nth-child(4) .pill{background:var(--green-t);color:var(--green-ink)}.st:nth-child(5) .pill{background:var(--blue-t);color:var(--blue-ink)}
+.bar{margin-top:28px;display:flex;height:14px;border-radius:100px;overflow:hidden;background:var(--line)}
+.bar i{display:block;height:100%}
+.bar-l{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-2);margin-top:8px;font-family:var(--mono);gap:8px}
+.check{display:grid;gap:10px;margin-top:14px;list-style:none}
+.check li{display:flex;gap:10px;font-size:15px;color:var(--ink-2)}
+.check li::before{content:"";flex:0 0 20px;height:20px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat;margin-top:2px}
+.check.x li::before{background-color:var(--red);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6.5 6.5l7 7M13.5 6.5l-7 7' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.mtr{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.mtr span{background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:6px 14px;font-size:13.5px;color:var(--ink)}
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+@media(max-width:760px){.roles{grid-template-columns:minmax(0,1fr)}}
+.role{border-radius:20px;padding:20px 22px}
+.role h4{font-size:16px;margin-bottom:6px}.role p{font-size:14px}
+.role.b{background:var(--blue-t);color:var(--blue-ink)}.role.g{background:var(--green-t);color:var(--green-ink)}.role.y{background:var(--yellow-t);color:var(--yellow-ink)}
 
-  /* USE CASES */
-  .usecase-cat{margin-top:44px;}
-  .usecase-cat h3{font-size:16px;color:var(--purple-700);margin-bottom:16px;font-family:'Space Grotesk';}
-  .usecase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  @media (max-width:900px){.usecase-grid{grid-template-columns:1fr 1fr;}}
-  @media (max-width:600px){.usecase-grid{grid-template-columns:1fr;}}
-  .usecase-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
-  .usecase-card .ti{font-size:13.5px;font-weight:700;margin-bottom:4px;}
-  .usecase-card .de{font-size:11.5px;color:var(--ink-soft);line-height:1.5;}
+/* USECASES */
+.uc .card{padding:22px}.uc .card h4{font-size:16px;margin-bottom:4px}.uc .card p{font-size:14px}
+.catt{display:flex;align-items:center;gap:10px;margin:36px 0 14px;font-family:var(--display);font-size:20px;font-weight:600}
 
-  /* INCENTIVO */
-  .incentive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
-  @media (max-width:860px){.incentive-grid{grid-template-columns:1fr;}}
-  .incentive-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:26px;}
-  .incentive-card .n{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .incentive-card h4{font-size:15px;color:#fff;margin-bottom:6px;}
-  .incentive-card p{font-size:12.5px;color:#CBB8EE;line-height:1.5;}
-  .incentive-note{margin-top:36px;font-size:12px;color:#9B85C4;font-family:'JetBrains Mono';max-width:640px;}
+/* CLOSING */
+.close{background:var(--blue);color:#fff;border-radius:32px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.close h2{font-size:clamp(28px,3.6vw,42px);max-width:640px;margin:0 auto}
+.close p{margin:14px auto 28px;max-width:560px;opacity:.92;font-size:17px}
+.close .mail{display:inline-flex;align-items:center;gap:12px;background:#fff;color:#1F2329;border-radius:100px;padding:6px 6px 6px 24px;font-weight:500;font-size:16px;user-select:all}
+.close button{font:inherit;font-weight:500;font-size:14px;border:0;background:var(--ph-blue);color:#fff;border-radius:100px;padding:10px 18px;cursor:pointer}
+.close::before,.close::after{content:"";position:absolute;border-radius:50%}
+.close::before{width:220px;height:220px;background:rgba(255,255,255,.1);left:-60px;bottom:-90px}
+.close::after{width:140px;height:140px;border-radius:40px;background:rgba(251,188,5,.55);right:-30px;top:-40px;transform:rotate(18deg)}
+.close>*{position:relative;z-index:1}
+footer{padding-block:32px;border-top:1px solid var(--line);background:var(--bg);color:var(--ink-2);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-  /* DARK STAT STRIP */
-  .stat-strip{background:linear-gradient(180deg,#150a28,#1d0e36);padding:70px 0;color:#fff;}
-  .stat-strip .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;}
-  @media (max-width:760px){.stat-strip .grid3{grid-template-columns:1fr;}}
-  .stat-strip .num{font-family:'Space Grotesk';font-size:38px;font-weight:700;color:#fff;}
-  .stat-strip .lb{font-size:12.5px;color:#B2A4D4;margin-top:6px;}
-
-  /* CLOSING */
-  .closing{background:var(--paper);padding:100px 0 80px;text-align:center;}
-  .closing h2{margin:0 auto 14px;max-width:600px;}
-  .closing .sub{margin:0 auto 34px;}
-  .btn{font-weight:600;font-size:14.5px;padding:14px 28px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;}
-  footer{border-top:1px solid var(--line);padding:28px 0;background:var(--paper);}
-  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-  footer .fmeta{font-size:12.5px;color:var(--ink-soft);font-family:'JetBrains Mono';}
+/* ANIMAÇÃO POR SCROLL */
+.js .rv,.js .seq>*{opacity:0;transform:translateY(26px);transition:opacity .65s cubic-bezier(.2,.65,.25,1),transform .65s cubic-bezier(.2,.65,.25,1)}
+.js .rv.in,.js .seq>*.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .js .rv,.js .seq>*{opacity:1!important;transform:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
 </style>
-</head>
-<body>
 
-<nav>
+<nav class="nav" aria-label="Principal">
   <div class="wrap">
-    <div class="brand"><span class="dot"></span>INMO</div>
-    <div class="navlinks">
-      <a href="#transforma">A transformação</a>
-      <a href="#recursos">Recursos</a>
-      <a href="#formatos">Formatos</a>
-      <a href="#alcance">Alcance</a>
-      <a href="#casos">Casos de uso</a>
-      <a href="#incentivo">Incentivo</a>
+    <div class="brand"><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Inmo<small>Guia RCS</small></div>
+    <div class="links">
+      <a href="#entender">Entender</a><a href="#recursos">Recursos</a><a href="#custos">Custos</a><a href="#aprovado">Projeto aprovado</a><a href="#praticas">Boas práticas</a><a href="#casos">Casos de uso</a>
     </div>
-    <a href="#contato" class="nav-cta">Falar com a Inmo</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- SEÇÃO 1 · BRANCO -->
 <header class="hero">
-  <div class="wrap">
+  <div class="wrap hgrid">
     <div>
-      <div class="eyebrow"><span class="blip"></span>RCS FOR BUSINESS · O CANAL QUE SUBSTITUI O SMS</div>
-      <h1>O WhatsApp mudou como sua marca conversa. O <em>RCS</em> é o próximo passo.</h1>
-      <p class="lead">Rich Communication Services é o novo padrão de mensagens do Android, já embutido no app nativo de mensagens de mais de cem milhões de celulares no Brasil. Sem instalar nada, sem custo pra quem recebe.</p>
+      <span class="tag b rv">RCS for Business · Google Messages</span>
+      <h1 class="rv">A mensagem do Android que fala em nome da <b>sua marca</b>.</h1>
+      <p class="lead rv">RCS troca o SMS por uma conversa com logo, selo de verificação, imagens e botões, direto no app de mensagens que o cliente já tem. Este guia serve para quem está conhecendo o canal e para quem já teve o projeto aprovado.</p>
+      <div class="paths seq">
+        <a class="path one" href="#entender"><div class="k">Primeira vez com RCS</div><strong>Entender o canal</strong><span class="d">O que é, como aparece no celular e quanto custa.</span></a>
+        <a class="path two" href="#aprovado"><div class="k">Projeto aprovado ou lançado</div><strong>Ver os próximos 90 dias</strong><span class="d">Prazos, regras do case, métricas e boas práticas.</span></a>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="big">+145M</div>
-      <div class="lbl">usuários com RCS ativo no Brasil</div>
-      <div class="src">FONTE: GOOGLE / BLIP, RCS FOR BUSINESS 2026</div>
+    <div class="stage" aria-hidden="true">
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+      <div class="phone back rv"><div class="screen h-m">
+        <div class="status"><span>12:30</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+        <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av" style="background:linear-gradient(135deg,#EA4335,#FBBC05)">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div><span class="mn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span></div>
+        <div class="msgs seq">
+          <div class="bub">Esses são os planos que separei pra você:</div>
+          <div class="car"><div class="rc"><div class="media m2"></div><div class="tx"><div class="ti">Plano Essencial</div></div><div class="ac">Ver detalhes</div></div><div class="rc"><div class="media m3"></div><div class="tx"><div class="ti">Plano Completo</div></div><div class="ac">Ver detalhes</div></div></div>
+          <div class="chips"><span class="chip">Comparar planos</span><span class="chip">Falar com vendas</span></div>
+        </div>
+      </div></div>
+      <div class="phone front rv"><div class="screen">
+        <div class="status"><span>12:30</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+        <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div><span class="mn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span></div>
+        <div class="msgs seq">
+          <div class="day">Hoje</div>
+          <div class="bub">Oi, Marina! Seu pedido nº 4821 acabou de sair do nosso centro de distribuição.</div>
+          <div class="rc"><div class="media m1"></div><div class="tx"><div class="ti">Seu pedido saiu para entrega</div><div class="de">Chega hoje até as 18h. Acompanhe em tempo real.</div></div><div class="ac">Acompanhar pedido</div></div>
+          <div class="chips"><span class="chip">Falar com a loja</span><span class="chip">Reagendar</span></div>
+          <div class="bub me">Chega hoje mesmo?</div>
+          <div class="bub">Chega! A previsão é até as 18h, e você recebe um aviso quando o entregador estiver perto.</div>
+        </div>
+        <div class="composer"><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="fld">Mensagem RCS</span><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+      </div></div>
+      <div class="float f1 rv"><span class="vf" style="width:18px;height:18px"></span>Marca verificada pelo Google</div>
+      <div class="float f2 rv"><span class="dots"><i></i><i></i><i></i></span>Sem instalar nada</div>
     </div>
+  </div>
+  <div class="wrap">
+    <div class="stats seq">
+      <div class="stat b"><div class="n">+145 mi</div><div class="l">usuários com RCS ativo no Brasil</div></div>
+      <div class="stat g"><div class="n">R$ 0</div><div class="l">de dados para quem recebe, as operadoras isentam o tráfego</div></div>
+      <div class="stat y"><div class="n sm2">Claro · Tim · Vivo</div><div class="l">operadoras que suportam o canal no Brasil</div></div>
+    </div>
+    <p class="src">Fonte: materiais Google e Blip, RCS for Business 2026. Os números mudam entre versões, confirme a mais recente antes de citar.</p>
   </div>
 </header>
 
-<!-- ANTES E DEPOIS -->
-<section class="section" id="transforma">
+<!-- SEÇÃO 2 · CINZA TEXTURIZADO -->
+<section class="band alt" id="entender">
   <div class="wrap">
-    <div class="kicker">A transformação</div>
-    <h2>O RCS transforma a caixa de mensagens numa experiência de marca</h2>
-    <p class="sub">Hoje, boa parte das mensagens automáticas chega como SMS: sem identidade, sem confiança, fácil de confundir com spam. O RCS resolve isso de forma estrutural, não cosmética.</p>
+    <div class="head">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i></span>Entender o canal</div>
+      <h2 class="t rv">RCS é o sucessor do SMS no Android</h2>
+      <p class="lead rv">É o mesmo app de mensagens que o cliente já usa. A diferença é o que a marca consegue enviar e o quanto o cliente confia no que recebe.</p>
+    </div>
+    <div class="grid g4 seq">
+      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>Sem app novo</h3><p>Funciona no aplicativo nativo de mensagens do Android, versão 8.1 ou superior, desde que o fabricante tenha liberado.</p></div>
+      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Marca verificada</h3><p>Nome, logo e selo aparecem em toda mensagem. O cliente sabe com quem está falando.</p></div>
+      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="3"/><path d="M7 20h10M9 8h6"/></svg></div><h3>Conteúdo rico</h3><p>Imagens, carrossel, vídeo, PDF e botões na própria conversa, sem abrir navegador.</p></div>
+      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><h3>Ação em um toque</h3><p>Responder, ligar, abrir o mapa ou marcar na agenda sem digitar.</p></div>
+    </div>
+    <div class="note rv" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg><div>iPhone tem suporte parcial e depende da operadora. No material mais recente da Blip, só a Vivo havia habilitado RCS para iOS no Brasil, com Tim e Claro previstas para janeiro de 2026. Confirme o status atual antes de prometer cobertura.</div></div>
 
-    <div class="compare-grid">
-      <div class="compare-col">
-        <div class="compare-badge bad">SEM RCS · SMS TRADICIONAL</div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:11</span><span>●●●</span></div>
-              <div class="msg-body" style="padding-top:14px;">
-                <div class="bubble-agent" style="max-width:92%;">29584<br><span style="color:#888;">Aceito</span></div>
-                <div class="bubble-agent" style="max-width:92%;">27587<br>Vc foi selecionado. ultima chance de R$100...</div>
-                <div class="bubble-agent" style="max-width:92%;">DETRAN<br>Sua CNH esta em processo de cancelamento...</div>
-                <div class="bubble-agent" style="max-width:92%;">28467<br>Voce pediu para atualizar a residencia...</div>
-              </div>
-            </div>
+    <div class="sub rv">Do SMS ao RCS</div>
+    <div class="cmp" style="margin-top:20px">
+      <div class="card no rv">
+        <span class="tag r">SMS tradicional</span>
+        <div class="phone"><div class="screen">
+          <div class="status"><span>12:11</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+          <div class="msgs seq" style="padding-top:18px">
+            <div class="day">Hoje</div>
+            <div class="bub"><span class="num">29584</span>Vc foi selecionado. Última chance de R$100...</div>
+            <div class="bub"><span class="num">DETRAN</span>Sua CNH está em processo de cancelamento...</div>
+            <div class="bub"><span class="num">28467</span>Você pediu para atualizar a residência...</div>
+            <div class="bub"><span class="num">30311</span>Parabens! Resgate seu premio pelo link...</div>
+            <div class="bub"><span class="num">82044</span>Seu cadastro sera bloqueado hoje. Evite clicando aqui...</div>
           </div>
-        </div>
-        <div class="reason-list">
-          <div class="reason-item bad">Sem identificação da marca</div>
-          <div class="reason-item bad">Números genéricos e compartilhados</div>
-          <div class="reason-item bad">Confundido com spam</div>
-          <div class="reason-item bad">Baixo engajamento</div>
-        </div>
+        </div></div>
+        <ul><li>Número genérico, sem nome da marca</li><li>Remetente compartilhado e confundido com spam</li><li>Só texto, sem botão nem imagem</li><li>Engajamento baixo</li></ul>
       </div>
-
-      <div class="arrow-mid"><span class="ar">→</span></div>
-
-      <div class="compare-col">
-        <div class="compare-badge good">COM RCS · CONVERSA DE MARCA</div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:11</span><span>●●●</span></div>
-              <div class="msg-header">
-                <div class="msg-avatar">SE</div>
-                <div>
-                  <div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div>
-                  <div class="msg-sub">Conta verificada</div>
-                </div>
-              </div>
-              <div class="msg-body">
-                <div class="rich-card">
-                  <div class="media" style="background:var(--purple-600);">[ imagem ]</div>
-                  <div class="body">
-                    <div class="ti">Sua encomenda está a caminho</div>
-                    <div class="de">Chega hoje até as 18h. Toque para acompanhar em tempo real.</div>
-                  </div>
-                </div>
-                <div class="chip-row">
-                  <div class="chip">Acompanhar pedido</div>
-                  <div class="chip">Falar com a loja</div>
-                </div>
-              </div>
-              <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-            </div>
+      <div class="card yes rv">
+        <span class="tag g">Com RCS</span>
+        <div class="phone"><div class="screen">
+          <div class="status"><span>12:11</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+          <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div><span class="mn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span></div>
+          <div class="msgs seq">
+            <div class="day">Hoje</div>
+            <div class="bub">Olá! Sua fatura de novembro já está disponível.</div>
+            <div class="rc"><div class="media m3"></div><div class="tx"><div class="ti">Fatura disponível</div><div class="de">Vence dia 10. Pague em um toque.</div></div><div class="ac">Pagar agora</div></div>
+            <div class="chips"><span class="chip">2ª via</span><span class="chip">Falar com atendente</span></div>
+            <div class="bub me">Paguei agora pelo app.</div>
+            <div class="bub">Pagamento confirmado! O comprovante já está no seu e-mail.</div>
           </div>
-        </div>
-        <div class="reason-list">
-          <div class="reason-item good">Logo e nome da marca visíveis</div>
-          <div class="reason-item good">Selo de conta verificada</div>
-          <div class="reason-item good">Conteúdo rico, não só texto</div>
-          <div class="reason-item good">Ação em um toque, sem digitar</div>
-        </div>
+        </div></div>
+        <ul><li>Logo e nome da marca em toda mensagem</li><li>Selo de conta verificada pelo Google</li><li>Imagem, carrossel e botões na conversa</li><li>Usuário pode bloquear e denunciar, o que protege o ecossistema</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONFIANCA E RECURSOS -->
-<section class="section alt">
+<!-- SEÇÃO 3 · DARK -->
+<section class="band dark" id="recursos">
   <div class="wrap">
-    <div class="kicker">Segurança e confiança</div>
-    <h2>Cada elemento da tela existe para gerar confiança</h2>
-    <p class="sub">Diferente do SMS, o RCS foi desenhado para que o usuário reconheça, em um piscar de olhos, que está falando com uma marca real.</p>
+    <div class="head">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i></span>Recursos ricos</div>
+      <h2 class="t rv">Peças que se combinam na jornada do cliente</h2>
+      <p class="lead rv">O programa de incentivo exige pelo menos dois recursos ricos por projeto. Estes são os que você mais vai usar.</p>
+    </div>
+    <div class="phones">
+      <div class="pc rv"><div class="phone"><div class="screen">
+        <div class="status"><span>12:30</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+        <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div></div>
+        <div class="msgs seq">
+          <div class="day">Hoje</div>
+          <div class="bub">Oi! Vi que você conheceu nossos planos no site.</div>
+          <div class="bub">Quer que eu mostre as opções por aqui mesmo?</div>
+          <div class="chips"><span class="chip">Quero saber mais</span><span class="chip">Agora não</span></div>
+          <div class="bub me">Quero saber mais</div>
+          <div class="bub">Perfeito! Me diz só o que pesa mais pra você: preço ou cobertura?</div>
+          <div class="chips"><span class="chip">Preço</span><span class="chip">Cobertura</span></div>
+        </div>
+        <div class="composer"><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="fld">Mensagem RCS</span><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+      </div></div><div class="cap"><strong>Respostas sugeridas</strong><span>Chips de resposta rápida, até 25 caracteres</span></div></div>
 
-    <div class="callout-wrap">
-      <div class="phone">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-status"><span>12:30</span><span>●●●</span></div>
-            <div class="msg-header">
-              <div class="msg-avatar">SE</div>
-              <div>
-                <div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div>
-                <div class="msg-sub">Conta verificada · RCS</div>
-              </div>
-            </div>
-            <div class="msg-body">
-              <div class="rich-card">
-                <div class="media" style="background:#111827;">[ foto do produto ]</div>
-                <div class="body">
-                  <div class="ti">Chegou o que você esperava</div>
-                  <div class="de">Confira as novidades da coleção e aproveite condições especiais só por hoje.</div>
-                </div>
-                <div class="acts">
-                  <div class="a">Ver novidades</div>
-                  <div class="a">Adicionar à agenda</div>
-                </div>
-              </div>
-            </div>
-            <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-          </div>
+      <div class="pc rv"><div class="phone"><div class="screen">
+        <div class="status"><span>12:30</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+        <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div></div>
+        <div class="msgs seq">
+          <div class="day">Hoje</div>
+          <div class="bub">Sua consulta está confirmada para amanhã às 10h, na unidade Centro.</div>
+          <div class="chips"><span class="chip fill">Adicionar à agenda</span><span class="chip">Ver no mapa</span><span class="chip">Ligar</span></div>
+          <div class="bub me">Adicionei, obrigado!</div>
+          <div class="bub">De nada! Qualquer imprevisto, é só reagendar por aqui.</div>
         </div>
-      </div>
+        <div class="composer"><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="fld">Mensagem RCS</span><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+      </div></div><div class="cap"><strong>Ações sugeridas</strong><span>Agenda, mapa, ligação, link e localização</span></div></div>
 
-      <div class="callout-list">
-        <div class="callout-item">
-          <div class="t"><span class="n">1</span>Confiança</div>
-          <div class="d">Nome da marca e logo aparecem em toda mensagem, não um número aleatório.</div>
+      <div class="pc rv"><div class="phone"><div class="screen">
+        <div class="status"><span>12:30</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+        <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div></div>
+        <div class="msgs seq">
+          <div class="day">Hoje</div>
+          <div class="bub">Temos uma condição especial pra quem já é cliente.</div>
+          <div class="rc"><div class="media m2"></div><div class="tx"><div class="ti">Acesso antecipado liberado</div><div class="de">Seleção pensada para você, com condições exclusivas até domingo.</div></div><div class="ac">Ver seleção</div><div class="ac">Falar com consultor</div></div>
+          <div class="chips"><span class="chip">Não tenho interesse</span></div>
         </div>
-        <div class="callout-item">
-          <div class="t"><span class="n">2</span>Verificação</div>
-          <div class="d">Selo de conta verificada pelo próprio Google, visível no cabeçalho da conversa.</div>
+        <div class="composer"><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="fld">Mensagem RCS</span><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+      </div></div><div class="cap"><strong>Rich card</strong><span>Mídia, título, texto e até 4 botões</span></div></div>
+
+      <div class="pc rv"><div class="phone"><div class="screen">
+        <div class="status"><span>12:30</span><span class="ic"><span class="wifi"></span><span class="bat"></span></span></div>
+        <div class="ph-head"><span class="bk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><div class="av">SE</div><div><div class="ph-name">Sua Empresa <span class="vf"></span></div><div class="ph-sub">Conta verificada · RCS</div></div></div>
+        <div class="msgs seq">
+          <div class="day">Hoje</div>
+          <div class="bub me">Quais planos vocês têm?</div>
+          <div class="bub">Esses são os três disponíveis na sua região:</div>
+          <div class="car"><div class="rc"><div class="media m1"></div><div class="tx"><div class="ti">Essencial</div></div><div class="ac">Ver mais</div></div><div class="rc"><div class="media m4"></div><div class="tx"><div class="ti">Completo</div></div><div class="ac">Ver mais</div></div><div class="rc"><div class="media m3"></div><div class="tx"><div class="ti">Premium</div></div><div class="ac">Ver mais</div></div></div>
+          <div class="chips"><span class="chip">Falar com vendas</span></div>
         </div>
-        <div class="callout-item">
-          <div class="t"><span class="n">3</span>Conteúdo rico</div>
-          <div class="d">Imagens, vídeos, PDFs e GIFs dentro da própria conversa, sem sair do app.</div>
-        </div>
-        <div class="callout-item">
-          <div class="t"><span class="n">4</span>Ações que otimizam</div>
-          <div class="d">Botões, agendamento, localização e integração com o ecossistema Google, tudo em um toque.</div>
-        </div>
+        <div class="composer"><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="fld">Mensagem RCS</span><span class="rnd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+      </div></div><div class="cap"><strong>Carrossel</strong><span>Até 10 cards, navegação lateral</span></div></div>
+    </div>
+    <div class="grid g3 seq" style="margin-top:60px">
+      <div class="card"><h3>Mais recursos</h3><ul><li>Vídeo, GIF, imagem e PDF na conversa</li><li>QR Code para cupom e ingresso</li><li>Google Wallet, Pay, Maps e Calendar</li></ul></div>
+      <div class="card"><h3>Limites técnicos</h3><ul><li>Resposta sugerida: até 25 caracteres</li><li>Rich card: título até 200, descrição até 2.000</li><li>Carrossel: até 10 cards</li></ul></div>
+      <div class="card"><h3>Atenção no iPhone</h3><ul><li>GIFs não animam</li><li>PDF aparece sem prévia</li><li>Teste a jornada nos dois sistemas</li></ul></div>
+    </div>
+
+    <div class="sub rv" style="color:#fff">Onde o cliente encontra a marca</div>
+    <p class="lead rv" style="margin-bottom:28px">Pontos de entrada fazem o cliente iniciar a conversa pela busca do Google. A conversa que o cliente inicia não tem tarifa de canal.</p>
+    <div class="phones">
+      <div class="pc rv"><div class="sm"><div class="sb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>sua empresa atendimento</div><div class="sr"><div class="biz"><div class="av" style="width:26px;height:26px;font-size:10px">SE</div>Sua Empresa</div><div class="u">Atendimento ao cliente</div><div class="btnrow"><div class="bt">Ligar</div><div class="bt p">Mensagem</div></div></div></div><div class="cap"><strong>Featured Snippet</strong><span>Destaque na busca com botão de chat</span></div></div>
+      <div class="pc rv"><div class="sm"><div class="sb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>sua empresa</div><div class="sr"><div class="biz"><div class="av" style="width:26px;height:26px;font-size:10px">SE</div>Sua Empresa</div><div class="u">suaempresa.com.br</div><div class="sl">Lojas ›</div><div class="sl">Ofertas exclusivas ›</div><div class="sl" style="font-weight:500">Conversar no Google Messages ›</div></div></div><div class="cap"><strong>Mega Site Links</strong><span>Botão de mensagem ao lado de ligar e site</span></div></div>
+      <div class="pc rv"><div class="sm"><div class="sb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>promoções da semana</div><div class="sr"><div class="biz"><div class="av" style="width:26px;height:26px;font-size:10px">SE</div>Sua Empresa</div><div class="u">Ofertas desta semana em toda a loja.</div><div class="btnrow"><div class="bt p" style="flex:none;padding:9px 22px">Chat</div></div></div></div><div class="cap"><strong>Web Results</strong><span>Resultados orgânicos, em beta fechado</span></div></div>
+    </div>
+    <div class="note rv" role="note" style="margin-top:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg><div>Também existe o Click2RCS: o cliente abre a conversa por QR Code ou link, e quem não tem Android com RCS cai em uma URL que a marca define.</div></div>
+  </div>
+</section>
+
+<!-- SEÇÃO 4 · BRANCO -->
+<section class="band" id="custos">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i></span>Quanto custa</div>
+      <h2 class="t rv">Você paga por mensagem ou por sessão de conversa</h2>
+      <p class="lead rv">Tarifas de canal da tabela de categorias de faturamento da Blip. A licença da plataforma Blip é cobrada à parte.</p>
+    </div>
+    <div class="grid g4 seq">
+      <div class="card price b"><span class="tag b" style="align-self:flex-start;background:var(--surface)">Básica</span><div class="v">R$ 0,065 <small>por mensagem</small></div><p class="u">Só texto, até 160 caracteres. Equivale a um SMS, com marca verificada.</p></div>
+      <div class="card price g"><span class="tag g" style="align-self:flex-start;background:var(--surface)">Única</span><div class="v">R$ 0,09 <small>por mensagem</small></div><p class="u">Mensagem rica avulsa: imagem, card, carrossel ou botão. Marca inicia.</p></div>
+      <div class="card price y"><span class="tag y" style="align-self:flex-start;background:var(--surface)">Conversa A2P</span><div class="v">R$ 0,239 <small>por sessão</small></div><p class="u">Marca inicia e o cliente responde em até 24h. A sessão substitui os R$ 0,09 daquele contato.</p></div>
+      <div class="card price r"><span class="tag r" style="align-self:flex-start;background:var(--surface)">Conversa P2A</span><div class="v">Sem tarifa <small>de canal</small></div><p class="u">Cliente inicia pela busca ou QR Code. Continua valendo a licença da plataforma.</p></div>
+    </div>
+
+    <div class="sub rv">Simule uma campanha rica</div>
+    <p class="lead rv">Mova os controles para ver o custo de canal de uma campanha com mensagem Única. Os valores não se somam: quem responde passa a custar a sessão, e não a sessão mais a mensagem.</p>
+    <div class="calc">
+      <div class="card rv">
+        <div class="field"><label for="n">Mensagens enviadas <output id="nO">1.000</output></label><input id="n" type="range" min="100" max="20000" step="100" value="1000"></div>
+        <div class="field"><label for="r">Taxa de resposta em 24h <output id="rO">10%</output></label><input id="r" type="range" min="0" max="40" step="1" value="10"></div>
+        <p style="font-size:14px">Resposta de quem recebeu abre a sessão A2P. Quem não responde custa só a mensagem Única.</p>
       </div>
+      <div class="res rv" aria-live="polite">
+        <span style="font-size:14px;color:var(--blue-ink);font-weight:500">Custo estimado de canal</span>
+        <div class="tot" id="tot">R$ 104,90</div>
+        <div class="row"><span>Sem resposta (<span id="a1">900</span> contatos × R$ 0,09)</span><span id="v1">R$ 81,00</span></div>
+        <div class="row"><span>Com resposta (<span id="a2">100</span> sessões × R$ 0,239)</span><span id="v2">R$ 23,90</span></div>
+        <div class="row"><span>Custo médio por contato</span><span id="v3">R$ 0,105</span></div>
+      </div>
+    </div>
+    <div class="tbl rv"><table>
+      <thead><tr><th>1.000 envios ricos</th><th>Contatos que respondem</th><th>Custo de canal</th></tr></thead>
+      <tbody><tr><td>Sem resposta</td><td>0</td><td>R$ 90,00</td></tr><tr><td>5% de resposta</td><td>50</td><td>R$ 97,45</td></tr><tr><td>10% de resposta</td><td>100</td><td>R$ 104,90</td></tr><tr><td>20% de resposta</td><td>200</td><td>R$ 119,80</td></tr></tbody>
+    </table></div>
+    <div class="note rv" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg><div>Valores de referência, sem a licença da plataforma. Confirme a tabela vigente com a Inmo ou a Blip antes de orçar. Testes de envio feitos pela equipe de ativação também geram tarifa e entram na fatura do mês.</div></div>
+  </div>
+</section>
+
+<!-- SEÇÃO 5 · CINZA TEXTURIZADO -->
+<section class="band alt" id="aprovado">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i></span>Projeto aprovado ou lançado</div>
+      <h2 class="t rv">Os próximos 90 dias decidem o resultado do projeto</h2>
+      <p class="lead rv">Alguns projetos de RCS são viabilizados pelo programa de incentivo do Google, sem custo de implementação para a marca. Em troca, o agente precisa ficar no ar, ser usado e gerar um case.</p>
+    </div>
+    <div class="tl seq">
+      <div class="st"><span class="pill">Antes</span><h4>Aprovação</h4><p>O Google analisa cada projeto antes do desenvolvimento. A decisão é dele e a submissão não garante aprovação.</p></div>
+      <div class="st"><span class="pill">Até 15 dias</span><h4>Ativação do canal</h4><p>A equipe de ativação da Blip configura a marca depois que todos os dados estão preenchidos.</p></div>
+      <div class="st"><span class="pill">Teste</span><h4>Lista branca</h4><p>Antes do lançamento, só números cadastrados recebem. Valide fluxo, textos e botões.</p></div>
+      <div class="st"><span class="pill">Dia 0</span><h4>Produção</h4><p>O agente vai ao ar e a Blip pede ao Google os pontos de entrada. O Google valida a entrega.</p></div>
+      <div class="st"><span class="pill">90 dias</span><h4>Ativo e medido</h4><p>Entre 30 e 90 dias a equipe acompanha os números e monta o case.</p></div>
+    </div>
+    <div class="bar rv" aria-hidden="true"><i style="width:33%;background:var(--blue)"></i><i style="width:33%;background:var(--red)"></i><i style="width:34%;background:var(--green)"></i></div>
+    <div class="bar-l"><span>Dia 0</span><span>Dia 30: acompanhamento</span><span>Dia 90: mínimo no ar</span></div>
+
+    <div class="grid g2 seq" style="margin-top:48px">
+      <div class="card">
+        <h3>Regras que valem para o projeto</h3>
+        <ul class="check">
+          <li>Mínimo de 90 dias ativo. O relógio começa na ativação dos pontos de entrada ou na primeira ação A2P, o que vier primeiro.</li>
+          <li>Pelo menos dois recursos ricos e um ponto de entrada além de URL simples, como Mega Site Link ou Featured Snippet.</li>
+          <li>O que foi submetido é um piso. Dá para acrescentar recursos, mas não remover.</li>
+          <li>Notificações A2P em paralelo são permitidas e não afetam o projeto. Não há volume mínimo.</li>
+          <li>Uma marca usa um incentivo por vez.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Como o case é montado</h3>
+        <ul class="check">
+          <li>Um slide no modelo do Google.</li>
+          <li>GIF da jornada em modo claro.</li>
+          <li>Números podem aparecer em porcentagem.</li>
+          <li>Depoimento de um representante da marca.</li>
+          <li>O Google envia o termo ao contato da empresa.</li>
+        </ul>
+        <ul class="check x" style="margin-top:18px">
+          <li>Sem prints, dark mode, vídeo ou imagem estática.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub rv">O que acompanhar</div>
+    <p class="lead rv">A Blip sugere medir atendimentos e conversão. O Google trabalha com estas métricas nos playbooks de RBM.</p>
+    <div class="mtr rv"><span>Taxa de entrega</span><span>RCS alcançável</span><span>Taxa de leitura</span><span>Taxa de resposta</span><span>Conversão</span><span>Custo por interação</span><span>Custo de aquisição</span><span>ROI / ROAS</span><span>Atendimentos resolvidos</span><span>Tempo da primeira resposta</span><span>Retenção no bot x transbordo</span></div>
+    <div class="roles seq">
+      <div class="role b"><h4>A marca</h4><p>Dados, orçamento, aprovação de criativo e retorno das vendas do CRM.</p></div>
+      <div class="role g"><h4>O parceiro</h4><p>Parte técnica: fluxo, integrações, lançamento e acompanhamento.</p></div>
+      <div class="role y"><h4>Em conjunto</h4><p>Estratégia, medição, case e expansão de casos de uso.</p></div>
+    </div>
+    <div class="note rv" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg><div>O incentivo é pago ao parceiro, não à marca, e depende de marcos de entrega. Ele viabiliza o projeto sem custo de implementação para o cliente. O uso do canal é cobrado normalmente, como mostra a seção de custos.</div></div>
+  </div>
+</section>
+
+<!-- SEÇÃO 6 · DARK -->
+<section class="band dark" id="praticas">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i></span>Boas práticas</div>
+      <h2 class="t rv">O que os playbooks do Google recomendam</h2>
+      <p class="lead rv">Resumo dos playbooks de RBM e do X-Platform Playbook de maio de 2026.</p>
+    </div>
+    <div class="grid g3 seq">
+      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6"/></svg></div><h3>Texto</h3><ul><li>Nome da pessoa na primeira linha</li><li>A prévia da notificação vem do título do card</li><li>Evite texto estilo SMS, jargão e CTA vago</li><li>Título e descrição em até 3 linhas</li></ul></div>
+      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg></div><h3>Formato</h3><ul><li>Rich card vertical com imagem 3:2</li><li>Carrossel em 16:9</li><li>Margem de segurança de pelo menos 5%</li><li>Teste no Android e no iPhone</li></ul></div>
+      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="5"/></svg></div><h3>Botões e links</h3><ul><li>Um botão principal por mensagem</li><li>Até 3 respostas sugeridas de 25 caracteres</li><li>Um link por mensagem, no final, com https://</li><li>Não misture sugestões do card com as da mensagem simples</li></ul></div>
+      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Envio</h3><ul><li>Promocional entre 7h e 22h</li><li>Considere fallback por SMS, e confirme com a Blip se está ativo</li><li>Confirme quem tem RCS antes com a checagem de capacidade</li></ul></div>
+      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><h3>Testes</h3><ul><li>Comparação antes e depois</li><li>Incrementalidade: grupo de controle que não recebe mensagem</li><li>A/B com uma variável por vez</li><li>Defina a janela de atribuição antes de começar</li></ul></div>
+      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg></div><h3>Expansão</h3><ul><li>Comece por um caso de uso só</li><li>Meça, ajuste e depois amplie</li><li>Compare com o WhatsApp para o case, mantendo o grupo de controle como teste à parte</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- RECURSOS INTERATIVOS -->
-<section class="section" id="recursos">
-  <div class="wrap">
-    <div class="kicker">Recursos interativos</div>
-    <h2>Explore o potencial de cada tipo de interação</h2>
-    <p class="sub">O RCS não é uma mensagem só, é um conjunto de componentes que se combinam de acordo com a jornada do seu cliente.</p>
+<!-- SEÇÃO 7 · BRANCO -->
+<section class="band" id="casos">
+  <div class="wrap uc">
+    <div class="head">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i></span>Casos de uso</div>
+      <h2 class="t rv">Onde o RCS costuma entrar primeiro</h2>
+      <p class="lead rv">A maioria dos projetos começa em uma frente e cresce com os resultados.</p>
+    </div>
+    <div class="catt rv"><span class="tag b">Pré-venda</span>Comercial</div>
+    <div class="grid g3 seq">
+      <div class="card"><h4>Qualificação de leads</h4><p>Fluxo curto que entende a necessidade e transborda para um vendedor.</p></div>
+      <div class="card"><h4>Catálogo interativo</h4><p>Carrossel de produtos ou planos com botão de compra na conversa.</p></div>
+      <div class="card"><h4>Agendamento de visitas</h4><p>Data e horário escolhidos no chat, com confirmação automática.</p></div>
+    </div>
+    <div class="catt rv"><span class="tag g">Pós-venda</span>Relacionamento</div>
+    <div class="grid g3 seq">
+      <div class="card"><h4>Rastreio de pedido</h4><p>Status de entrega com botão de acompanhamento e suporte.</p></div>
+      <div class="card"><h4>Lembrete de pagamento</h4><p>Vencimento com botão de segunda via ou pagamento.</p></div>
+      <div class="card"><h4>Pesquisa de satisfação</h4><p>CSAT ou NPS com resposta em um toque.</p></div>
+    </div>
+    <div class="catt rv"><span class="tag y">Notificações</span>Engajamento</div>
+    <div class="grid g3 seq">
+      <div class="card"><h4>Reengajamento</h4><p>Recupere inativos com mensagem rica e oferta direcionada.</p></div>
+      <div class="card"><h4>Renovação</h4><p>Aviso de vencimento de plano, assinatura ou apólice.</p></div>
+      <div class="card"><h4>Alertas operacionais</h4><p>Mudança de horário, queda de sistema e outros eventos sensíveis ao tempo.</p></div>
+    </div>
 
-    <div class="flow-row">
-      <div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:30</span><span>●●●</span></div>
-              <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-              <div class="msg-body">
-                <div class="bubble-agent" style="max-width:90%;">Curioso pra saber mais sobre o novo plano? Posso te mostrar as opções.</div>
-                <div class="chip-row">
-                  <div class="chip">Quero saber mais</div>
-                  <div class="chip">Agora não</div>
-                </div>
-              </div>
-              <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-caption">Respostas sugeridas<span class="sm">Chips de resposta rápida, sem digitar</span></div>
-      </div>
-
-      <div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:30</span><span>●●●</span></div>
-              <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-              <div class="msg-body">
-                <div class="bubble-agent" style="max-width:90%;">Sua consulta está marcada para amanhã às 10h.</div>
-                <div class="chip-row">
-                  <div class="chip filled">Adicionar à agenda</div>
-                  <div class="chip">Ver endereço</div>
-                  <div class="chip">Ligar agora</div>
-                </div>
-              </div>
-              <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-caption">Ações sugeridas<span class="sm">Agenda, mapa, ligação, tudo nativo</span></div>
-      </div>
-
-      <div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:30</span><span>●●●</span></div>
-              <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-              <div class="msg-body">
-                <div class="rich-card">
-                  <div class="media" style="background:linear-gradient(135deg,#7C3AED,#C026D3);">[ imagem de destaque ]</div>
-                  <div class="body">
-                    <div class="ti">Acesso antecipado liberado</div>
-                    <div class="de">Uma seleção pensada especialmente pra você, com condições exclusivas.</div>
-                  </div>
-                  <div class="acts"><div class="a">Ver seleção</div></div>
-                </div>
-              </div>
-              <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-caption">Rich Card<span class="sm">Imagem, texto e botão em um cartão só</span></div>
-      </div>
-
-      <div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:30</span><span>●●●</span></div>
-              <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-              <div class="msg-body">
-                <div class="carousel-row">
-                  <div class="rich-card"><div class="media" style="background:#0F6E56;height:64px;">[ opção 1 ]</div><div class="body"><div class="ti" style="font-size:9.5px;">Plano essencial</div></div><div class="acts"><div class="a" style="font-size:9px;padding:6px 8px;">Ver mais</div></div></div>
-                  <div class="rich-card"><div class="media" style="background:#0C447C;height:64px;">[ opção 2 ]</div><div class="body"><div class="ti" style="font-size:9.5px;">Plano completo</div></div><div class="acts"><div class="a" style="font-size:9px;padding:6px 8px;">Ver mais</div></div></div>
-                  <div class="rich-card"><div class="media" style="background:#8B5E3C;height:64px;">[ opção 3 ]</div><div class="body"><div class="ti" style="font-size:9.5px;">Plano premium</div></div><div class="acts"><div class="a" style="font-size:9px;padding:6px 8px;">Ver mais</div></div></div>
-                </div>
-              </div>
-              <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-caption">Carrossel<span class="sm">Até 10 cards lado a lado, na horizontal</span></div>
-      </div>
-
-      <div>
-        <div class="phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status"><span>12:30</span><span>●●●</span></div>
-              <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-              <div class="msg-body">
-                <div class="rich-card">
-                  <div class="media" style="background:#111;position:relative;">[ vídeo ]<div style="position:absolute;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:#111;font-size:11px;">▶</div></div>
-                  <div class="body"><div class="ti">Veja como funciona em 15s</div></div>
-                </div>
-              </div>
-              <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-caption">Vídeo e mídia<span class="sm">Com prévia em miniatura, sem sair do chat</span></div>
-      </div>
+    <div class="close rv" style="margin-top:80px">
+      <h2>Vamos ver qual caminho faz sentido para a sua marca?</h2>
+      <p>Um projeto de RCS pode começar pequeno. A Inmo é parceira oficial da Blip e acompanha do desenho do fluxo ao case.</p>
+      <div class="mail"><span id="mail">contato@inmo.work</span><button id="copy" type="button">Copiar</button></div>
     </div>
   </div>
 </section>
 
-<!-- FORMATOS -->
-<section class="section alt" id="formatos">
-  <div class="wrap">
-    <div class="kicker">Formatos de mensagem</div>
-    <h2>Três formas de conversar, uma plataforma só</h2>
-    <p class="sub">O RCS se adapta ao tipo de comunicação: de um aviso simples até uma conversa completa com atendimento.</p>
+<footer><div class="wrap"><span>Inmo Tecnologia · Chatbots, IA e parceira oficial da Blip</span><span>Material de apresentação sobre RCS for Business</span></div></footer>
 
-    <div class="format-grid">
-      <div class="format-card">
-        <div class="phone" style="width:100%;max-width:210px;margin:0 auto;">
-          <div class="phone-frame"><div class="phone-screen" style="height:340px;">
-            <div class="phone-status"><span>12:11</span><span>●●●</span></div>
-            <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-            <div class="msg-body"><div class="bubble-agent" style="max-width:92%;">Descontos incríveis esta semana. Aproveite na loja ou site. Tempo limitado!</div></div>
-          </div></div>
-        </div>
-        <h4>Mensagem Básica</h4>
-        <p>Só texto, até 160 caracteres, como um SMS, mas com marca verificada.</p>
-      </div>
+<script>
+(function(){
+  /* calculadora */
+  var n=document.getElementById('n'),r=document.getElementById('r');
+  var brl=function(v,d){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:d||2,maximumFractionDigits:d||2})};
+  function calc(){
+    var N=+n.value,R=+r.value/100,resp=Math.round(N*R),sem=N-resp;
+    var v1=sem*0.09,v2=resp*0.239,t=v1+v2;
+    document.getElementById('nO').textContent=N.toLocaleString('pt-BR');
+    document.getElementById('rO').textContent=r.value+'%';
+    document.getElementById('a1').textContent=sem.toLocaleString('pt-BR');
+    document.getElementById('a2').textContent=resp.toLocaleString('pt-BR');
+    document.getElementById('v1').textContent=brl(v1);
+    document.getElementById('v2').textContent=brl(v2);
+    document.getElementById('tot').textContent=brl(t);
+    document.getElementById('v3').textContent=brl(t/N,3);
+  }
+  n.addEventListener('input',calc);r.addEventListener('input',calc);calc();
 
-      <div class="format-card">
-        <div class="phone" style="width:100%;max-width:210px;margin:0 auto;">
-          <div class="phone-frame"><div class="phone-screen" style="height:340px;">
-            <div class="phone-status"><span>12:11</span><span>●●●</span></div>
-            <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-            <div class="msg-body">
-              <div class="rich-card" style="max-width:100%;"><div class="media" style="background:var(--purple-700);height:60px;">[ imagem ]</div><div class="body"><div class="de" style="font-size:9.5px;">Condição especial pra quem já demonstrou interesse nos nossos produtos.</div></div></div>
-              <div class="chip-row"><div class="chip" style="font-size:9px;">Ver ofertas</div></div>
-            </div>
-          </div></div>
-        </div>
-        <h4>Mensagem Única</h4>
-        <p>Conteúdo rico: imagens, botões e carrossel, em uma mensagem avulsa.</p>
-      </div>
+  /* copiar e-mail */
+  var b=document.getElementById('copy');
+  b.addEventListener('click',function(){
+    var t='contato@inmo.work';
+    function ok(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1800)}
+    function sel(){var s=window.getSelection(),g=document.createRange();g.selectNodeContents(document.getElementById('mail'));s.removeAllRanges();s.addRange(g)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,sel)}else{sel()}
+  });
 
-      <div class="format-card">
-        <div class="phone" style="width:100%;max-width:210px;margin:0 auto;">
-          <div class="phone-frame"><div class="phone-screen" style="height:340px;">
-            <div class="phone-status"><span>12:11</span><span>●●●</span></div>
-            <div class="msg-header"><div class="msg-avatar">SE</div><div><div class="msg-name-row"><span class="msg-name">Sua Empresa</span><span class="verified"></span></div></div></div>
-            <div class="msg-body">
-              <div class="bubble-agent" style="max-width:90%;">Olá! Como posso te ajudar hoje?</div>
-              <div class="bubble-user">Quero saber sobre meu pedido</div>
-              <div class="bubble-agent" style="max-width:90%;">Claro, já te mostro o status.</div>
-            </div>
-            <div class="rcs-input"><div class="field">Mensagem RCS</div><div class="ic"></div></div>
-          </div></div>
-        </div>
-        <h4>Conversacional</h4>
-        <p>Sessão de conversa completa, ida e volta, como um atendimento de verdade.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  /* animação progressiva por scroll: fade-in + slide-up, com cascata nas mensagens e grades */
+  if(!('IntersectionObserver' in window)) return;
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target;
+      if(el.classList.contains('seq')){
+        Array.prototype.forEach.call(el.children,function(c,i){
+          c.style.transitionDelay=(i*0.13)+'s';
+          c.classList.add('in');
+        });
+      }else{
+        el.classList.add('in');
+      }
+      io.unobserve(el);
+    });
+  },{threshold:.15,rootMargin:'0px 0px -7% 0px'});
+  document.querySelectorAll('.rv,.seq').forEach(function(el){io.observe(el)});
+})();
+</script>
 
-<!-- ALCANCE / ENTRY POINTS -->
-<section class="section" id="alcance">
-  <div class="wrap">
-    <div class="kicker">Onde o cliente encontra você</div>
-    <h2>Alcance em escala, direto na busca do Google</h2>
-    <p class="sub">Sem baixar app, sem salvar contato. O cliente busca sua marca e já encontra um jeito de conversar.</p>
-
-    <div class="flow-row center">
-      <div>
-        <div class="search-mock">
-          <div class="search-bar">🔍 &nbsp; sua empresa atendimento</div>
-          <div class="search-result">
-            <div class="biz"><div class="bavatar">SE</div>Sua Empresa</div>
-            <div style="font-size:11px;color:#666;margin-bottom:8px;">Atendimento ao cliente</div>
-            <div class="search-btn-row">
-              <div class="search-btn">📞 Ligar</div>
-              <div class="search-btn msg">💬 Mensagem</div>
-            </div>
-          </div>
-        </div>
-        <div class="entry-badge">FEATURED SNIPPET</div>
-      </div>
-
-      <div>
-        <div class="search-mock">
-          <div class="search-bar">🔍 &nbsp; sua empresa</div>
-          <div class="search-result">
-            <div class="biz"><div class="bavatar">SE</div>Sua Empresa</div>
-            <div style="font-size:11px;color:#666;margin-bottom:8px;">suaempresa.com.br</div>
-            <div style="font-size:11px;color:#0B57D0;margin-bottom:4px;">Lojas ›</div>
-            <div style="font-size:11px;color:#0B57D0;margin-bottom:4px;">Ofertas exclusivas ›</div>
-            <div style="font-size:11px;color:#0B57D0;">💬 Conversar no Google Messages</div>
-          </div>
-        </div>
-        <div class="entry-badge">MEGA SITE LINKS</div>
-      </div>
-
-      <div>
-        <div class="search-mock">
-          <div class="search-bar">🔍 &nbsp; promoções da semana</div>
-          <div class="search-result">
-            <div class="biz"><div class="bavatar">SE</div>Sua Empresa</div>
-            <div style="font-size:11px;color:#666;margin-bottom:8px;">Confira as ofertas exclusivas desta semana em toda a loja.</div>
-            <div class="search-btn-row"><div class="search-btn msg" style="flex:none;padding:8px 16px;">💬 Chat</div></div>
-          </div>
-        </div>
-        <div class="entry-badge">WEB RESULTS</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STAT STRIP -->
-<section class="stat-strip">
-  <div class="wrap">
-    <div class="grid3">
-      <div><div class="num">+145M</div><div class="lb">usuários com RCS ativo no Brasil</div></div>
-      <div><div class="num">Claro · Tim · Vivo</div><div class="lb">operadoras que já suportam o canal</div></div>
-      <div><div class="num">R$ 0</div><div class="lb">custo de dados pro usuário final</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CASOS DE USO -->
-<section class="section alt" id="casos">
-  <div class="wrap">
-    <div class="kicker">Casos de uso</div>
-    <h2>Onde o RCS já está gerando resultado</h2>
-    <p class="sub">Não precisa migrar a operação inteira de uma vez. A maioria dos projetos começa em uma frente só, enxuta, e cresce a partir dos resultados.</p>
-
-    <div class="usecase-cat">
-      <h3>Pré-venda e comercial</h3>
-      <div class="usecase-grid">
-        <div class="usecase-card"><div class="ti">Qualificação de leads</div><div class="de">Fluxo curto que entende a necessidade do cliente e transborda para um vendedor.</div></div>
-        <div class="usecase-card"><div class="ti">Catálogo interativo</div><div class="de">Carrossel de produtos ou planos, com fotos e botão de compra direto na conversa.</div></div>
-        <div class="usecase-card"><div class="ti">Agendamento de visitas</div><div class="de">Cliente escolhe data e horário sem sair do chat, com confirmação automática.</div></div>
-      </div>
-    </div>
-
-    <div class="usecase-cat">
-      <h3>Pós-venda e relacionamento</h3>
-      <div class="usecase-grid">
-        <div class="usecase-card"><div class="ti">Rastreio de pedido</div><div class="de">Status de entrega em tempo real, com botão de rastreamento e suporte.</div></div>
-        <div class="usecase-card"><div class="ti">Lembrete de pagamento</div><div class="de">Notificação de vencimento com botão de segunda via ou pagamento direto.</div></div>
-        <div class="usecase-card"><div class="ti">Pesquisa de satisfação</div><div class="de">CSAT ou NPS enviado após o atendimento, com resposta em um toque.</div></div>
-      </div>
-    </div>
-
-    <div class="usecase-cat">
-      <h3>Notificações e engajamento</h3>
-      <div class="usecase-grid">
-        <div class="usecase-card"><div class="ti">Campanhas de reengajamento</div><div class="de">Recupere clientes inativos com uma mensagem rica e uma oferta direcionada.</div></div>
-        <div class="usecase-card"><div class="ti">Lembrete de renovação</div><div class="de">Avisos de vencimento de plano, assinatura ou apólice antes que o cliente esqueça.</div></div>
-        <div class="usecase-card"><div class="ti">Alertas operacionais</div><div class="de">Avisos de queda de sistema, mudança de horário ou qualquer evento sensível ao tempo.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INCENTIVO -->
-<section class="section" id="incentivo" style="background:linear-gradient(180deg,#150a28,#1d0e36);color:#fff;">
-  <div class="wrap">
-    <div class="kicker" style="color:var(--purple-400);">Incentivo Google</div>
-    <h2 style="color:#fff;">Alguns projetos de RCS podem sair sem custo de implementação</h2>
-    <p class="sub" style="color:#CBB8EE;">O Google mantém um programa de incentivo para acelerar a adoção do RCS por marcas elegíveis. Quando o seu projeto se encaixa nos critérios, o custo de implementação pode ser viabilizado por esse programa, sem sair do seu bolso.</p>
-
-    <div class="incentive-grid">
-      <div class="incentive-card">
-        <div class="n">1</div>
-        <h4>Elegibilidade</h4>
-        <p>Avaliamos junto com a Blip se a sua marca e o tipo de jornada se encaixam nos critérios do programa do Google.</p>
-      </div>
-      <div class="incentive-card">
-        <div class="n">2</div>
-        <h4>Submissão e aprovação</h4>
-        <p>Submetemos o projeto formalmente. A decisão final é do Google, que avalia cada caso individualmente antes do lançamento.</p>
-      </div>
-      <div class="incentive-card">
-        <div class="n">3</div>
-        <h4>Projeto viabilizado</h4>
-        <p>Com o projeto aprovado, a implementação é viabilizada sem custo de projeto para a sua empresa.</p>
-      </div>
-    </div>
-
-    <div class="incentive-note">Sujeito a análise e aprovação do Google. Nem toda marca se qualifica — vamos avaliar juntos se faz sentido pro seu caso.</div>
-  </div>
-</section>
-
-<!-- CLOSING -->
-<section class="closing" id="contato">
-  <div class="wrap">
-    <h2>Vamos ver qual desses caminhos faz sentido pra vocês?</h2>
-    <p class="sub">Um projeto de RCS não precisa começar grande. Começa com uma conversa.</p>
-    <a href="mailto:contato@inmo.work" class="btn">contato@inmo.work</a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="brand"><span class="dot"></span>INMO</div>
-    <div class="fmeta">RCS for Business · Material de apresentação genérico</div>
-  </div>
-</footer>
-
-</body>
-</html>
+</body></html>
